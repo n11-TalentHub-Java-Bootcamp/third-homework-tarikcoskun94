@@ -62,6 +62,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
 ## Contact
-Tarık COŞKUN  - https://www.linkedin.com/in/,ıkcoskun
+Tarık COŞKUN  - https://www.linkedin.com/in/tarıkcoskun
 
 Project Link: https://github.com/n11-TalentHub-Java-Bootcamp/third-homework-tarikcoskun94
