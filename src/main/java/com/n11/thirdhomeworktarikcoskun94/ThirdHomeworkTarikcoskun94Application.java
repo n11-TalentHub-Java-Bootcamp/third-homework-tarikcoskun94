@@ -9,5 +9,4 @@ public class ThirdHomeworkTarikcoskun94Application {
     public static void main(String[] args) {
         SpringApplication.run(ThirdHomeworkTarikcoskun94Application.class, args);
     }
-
 }

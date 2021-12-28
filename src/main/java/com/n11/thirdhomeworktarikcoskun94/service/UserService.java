@@ -55,4 +55,14 @@ public class UserService {
         userRepository.deleteById(id);
         productCommentService.deleteProductCommentByUserId(id);
     }
+
+    public void saveUsers(List<User> users) {
+
+        userRepository.saveAll(users);
+    }
+
+    public void deleteAllUsers() {
+
+        userRepository.deleteAll();
+    }
 }

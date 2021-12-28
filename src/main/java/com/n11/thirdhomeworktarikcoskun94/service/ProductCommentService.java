@@ -3,7 +3,9 @@ package com.n11.thirdhomeworktarikcoskun94.service;
 import com.n11.thirdhomeworktarikcoskun94.dto.ProductCommentDTO;
 import com.n11.thirdhomeworktarikcoskun94.entity.ProductComment;
 import com.n11.thirdhomeworktarikcoskun94.exception.ProductCommentNotFoundException;
+import com.n11.thirdhomeworktarikcoskun94.exception.UserNotFoundException;
 import com.n11.thirdhomeworktarikcoskun94.repository.ProductCommentRepository;
+import com.n11.thirdhomeworktarikcoskun94.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ import java.util.List;
 public class ProductCommentService {
 
     private final ProductCommentRepository productCommentRepository;
+    private final UserRepository userRepository;
 
     public List<ProductCommentDTO> findAllProductComments() {
 
@@ -38,6 +41,10 @@ public class ProductCommentService {
 
     public ProductCommentDTO saveProductComment(ProductCommentDTO productCommentDTO) {
 
+        if (!userRepository.existsById(productCommentDTO.getUserId())) {
+            throw new UserNotFoundException("User is not found by id: " + productCommentDTO.getUserId());
+        }
+
         ProductComment requestProductComment = ProductCommentDTO.convertProductCommentDTOToProductComment(productCommentDTO);
         ProductComment responseProductComment = productCommentRepository.save(requestProductComment);
 
@@ -56,5 +63,15 @@ public class ProductCommentService {
     public void deleteProductCommentByUserId(String userId) {
 
         productCommentRepository.deleteByUserId(userId);
+    }
+
+    public void saveProductComments(List<ProductComment> productComments) {
+
+        productCommentRepository.saveAll(productComments);
+    }
+
+    public void deleteAllProductComments() {
+
+        productCommentRepository.deleteAll();
     }
 }
